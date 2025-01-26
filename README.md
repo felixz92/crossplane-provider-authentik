@@ -8,10 +8,10 @@ generation tools and exposes XRM-conformant managed resources for the
 ## Getting Started
 
 Install the provider by using the following command after changing the image tag
-to the [latest release](https://marketplace.upbound.io/providers/vhdirk/provider-authentik):
+to the [latest release](https://marketplace.upbound.io/providers/felixz92/provider-authentik):
 
 ```sh
-up ctp provider install xpkg.upbound.io/vhdirk/provider-authentik:v0.2.0
+up ctp provider install xpkg.upbound.io/felixz92/provider-authentik:v0.2.0
 ```
 
 Alternatively, you can use declarative installation:
@@ -23,13 +23,13 @@ kind: Provider
 metadata:
   name: provider-authentik
 spec:
-  package: xpkg.upbound.io/vhdirk/provider-authentik:v0.2.0
+  package: xpkg.upbound.io/felixz92/provider-authentik:v0.2.0
 EOF
 ```
 
 Notice that in this example Provider resource is referencing ControllerConfig with debug enabled.
 
-You can see the API reference [here](https://doc.crds.dev/github.com/vhdirk/crossplane-provider-authentik).
+You can see the API reference [here](https://doc.crds.dev/github.com/felixz92/crossplane-provider-authentik).
 
 ## Developing
 
@@ -60,4 +60,4 @@ make build
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/vhdirk/crossplane-provider-authentik/issues).
+open an [issue](https://github.com/felixz92/crossplane-provider-authentik/issues).

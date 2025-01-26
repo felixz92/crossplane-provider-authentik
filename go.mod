@@ -1,4 +1,4 @@
-module github.com/vhdirk/crossplane-provider-authentik
+module github.com/felixz92/crossplane-provider-authentik
 
 go 1.23.0
 

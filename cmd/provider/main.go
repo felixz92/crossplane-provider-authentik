@@ -26,12 +26,12 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/cache"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	"github.com/vhdirk/crossplane-provider-authentik/apis"
-	"github.com/vhdirk/crossplane-provider-authentik/apis/v1alpha1"
-	"github.com/vhdirk/crossplane-provider-authentik/config"
-	"github.com/vhdirk/crossplane-provider-authentik/internal/clients"
-	"github.com/vhdirk/crossplane-provider-authentik/internal/controller"
-	"github.com/vhdirk/crossplane-provider-authentik/internal/features"
+	"github.com/felixz92/crossplane-provider-authentik/apis"
+	"github.com/felixz92/crossplane-provider-authentik/apis/v1alpha1"
+	"github.com/felixz92/crossplane-provider-authentik/config"
+	"github.com/felixz92/crossplane-provider-authentik/internal/clients"
+	"github.com/felixz92/crossplane-provider-authentik/internal/controller"
+	"github.com/felixz92/crossplane-provider-authentik/internal/features"
 )
 
 func main() {

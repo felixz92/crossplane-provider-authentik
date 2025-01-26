@@ -2,7 +2,7 @@
 # Setup Project
 
 PROJECT_NAME ?= provider-authentik
-PROJECT_REPO ?= github.com/vhdirk/crossplane-$(PROJECT_NAME)
+PROJECT_REPO ?= github.com/felixz92/crossplane-$(PROJECT_NAME)
 
 export TERRAFORM_VERSION ?= 1.5.7
 
@@ -63,17 +63,17 @@ UPTEST_VERSION = v0.13.1
 # ====================================================================================
 # Setup Images
 
-REGISTRY_ORGS ?= xpkg.upbound.io/vhdirk
+REGISTRY_ORGS ?= xpkg.upbound.io/felixz92
 IMAGES = $(PROJECT_NAME)
 -include build/makelib/imagelight.mk
 
 # ====================================================================================
 # Setup XPKG
 
-XPKG_REG_ORGS ?= xpkg.upbound.io/vhdirk
+XPKG_REG_ORGS ?= xpkg.upbound.io/felixz92
 # NOTE(hasheddan): skip promoting on xpkg.upbound.io as channel tags are
 # inferred.
-XPKG_REG_ORGS_NO_PROMOTE ?= xpkg.upbound.io/vhdirk
+XPKG_REG_ORGS_NO_PROMOTE ?= xpkg.upbound.io/felixz92
 XPKGS = $(PROJECT_NAME)
 -include build/makelib/xpkg.mk
 

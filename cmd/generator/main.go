@@ -11,7 +11,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/pipeline"
 
-	"github.com/vhdirk/crossplane-provider-authentik/config"
+	"github.com/felixz92/crossplane-provider-authentik/config"
 )
 
 func main() {

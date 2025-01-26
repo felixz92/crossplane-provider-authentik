@@ -26,7 +26,7 @@ func Configure(p *config.Provider) {
 		// // TODO: Support generic references
 		// // https://github.com/crossplane/upjet/issues/95
 		// r.References["protocol_provider"] = config.Reference{
-		// 	Type:      "github.com/vhdirk/crossplane-provider-authentik/apis/provider/v1alpha1.Proxy",
+		// 	Type:      "github.com/felixz92/crossplane-provider-authentik/apis/provider/v1alpha1.Proxy",
 		// 	Extractor: `github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)`,
 		// }
 

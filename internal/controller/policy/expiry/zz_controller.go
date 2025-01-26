@@ -21,8 +21,8 @@ import (
 	"github.com/pkg/errors"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/vhdirk/crossplane-provider-authentik/apis/policy/v1alpha1"
-	features "github.com/vhdirk/crossplane-provider-authentik/internal/features"
+	v1alpha1 "github.com/felixz92/crossplane-provider-authentik/apis/policy/v1alpha1"
+	features "github.com/felixz92/crossplane-provider-authentik/internal/features"
 )
 
 // Setup adds a controller that reconciles Expiry managed resources.

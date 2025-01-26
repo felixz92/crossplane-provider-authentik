@@ -9,17 +9,17 @@ import (
 	_ "embed"
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
-	"github.com/vhdirk/crossplane-provider-authentik/config/base"
-	"github.com/vhdirk/crossplane-provider-authentik/config/directory"
-	"github.com/vhdirk/crossplane-provider-authentik/config/policy"
-	"github.com/vhdirk/crossplane-provider-authentik/config/propertymapping"
-	"github.com/vhdirk/crossplane-provider-authentik/config/provider"
-	"github.com/vhdirk/crossplane-provider-authentik/config/stage"
+	"github.com/felixz92/crossplane-provider-authentik/config/base"
+	"github.com/felixz92/crossplane-provider-authentik/config/directory"
+	"github.com/felixz92/crossplane-provider-authentik/config/policy"
+	"github.com/felixz92/crossplane-provider-authentik/config/propertymapping"
+	"github.com/felixz92/crossplane-provider-authentik/config/provider"
+	"github.com/felixz92/crossplane-provider-authentik/config/stage"
 )
 
 const (
 	resourcePrefix = "authentik"
-	modulePath     = "github.com/vhdirk/crossplane-provider-authentik"
+	modulePath     = "github.com/felixz92/crossplane-provider-authentik"
 	rootGroup      = "authentik.crossplane.io"
 )
 
