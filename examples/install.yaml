@@ -3,4 +3,4 @@ kind: Provider
 metadata:
   name: provider-authentik
 spec:
-  package: felixz92/provider-authentik:v0.1.0
+  package: felixz92/provider-authentik:v0.2.1
