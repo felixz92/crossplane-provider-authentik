@@ -37,3 +37,8 @@ var PropertyMappingProviderRACRef = config.Reference{
 	TerraformName: "authentik_property_mapping_provider_rac",
 	Extractor:     `github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)`,
 }
+
+var ServiceConnectionKubernetesRef = config.Reference{
+	TerraformName: "authentik_service_connection_kubernetes",
+	Extractor:     `github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)`,
+}

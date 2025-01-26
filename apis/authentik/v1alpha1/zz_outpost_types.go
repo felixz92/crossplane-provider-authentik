@@ -26,7 +26,17 @@ type OutpostInitParameters struct {
 	ProtocolProviders []*float64 `json:"protocolProviders,omitempty" tf:"protocol_providers,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.ServiceConnectionKubernetes
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	ServiceConnection *string `json:"serviceConnection,omitempty" tf:"service_connection,omitempty"`
+
+	// Reference to a ServiceConnectionKubernetes in authentik to populate serviceConnection.
+	// +kubebuilder:validation:Optional
+	ServiceConnectionRef *v1.Reference `json:"serviceConnectionRef,omitempty" tf:"-"`
+
+	// Selector for a ServiceConnectionKubernetes in authentik to populate serviceConnection.
+	// +kubebuilder:validation:Optional
+	ServiceConnectionSelector *v1.Selector `json:"serviceConnectionSelector,omitempty" tf:"-"`
 
 	// (String) Allowed values:
 	// Allowed values:
@@ -82,8 +92,18 @@ type OutpostParameters struct {
 	ProtocolProviders []*float64 `json:"protocolProviders,omitempty" tf:"protocol_providers,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.ServiceConnectionKubernetes
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	// +kubebuilder:validation:Optional
 	ServiceConnection *string `json:"serviceConnection,omitempty" tf:"service_connection,omitempty"`
+
+	// Reference to a ServiceConnectionKubernetes in authentik to populate serviceConnection.
+	// +kubebuilder:validation:Optional
+	ServiceConnectionRef *v1.Reference `json:"serviceConnectionRef,omitempty" tf:"-"`
+
+	// Selector for a ServiceConnectionKubernetes in authentik to populate serviceConnection.
+	// +kubebuilder:validation:Optional
+	ServiceConnectionSelector *v1.Selector `json:"serviceConnectionSelector,omitempty" tf:"-"`
 
 	// (String) Allowed values:
 	// Allowed values:

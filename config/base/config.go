@@ -52,6 +52,8 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_outpost", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "Outpost"
+
+		r.References["service_connection"] = ServiceConnectionKubernetesRef
 	})
 	p.AddResourceConfigurator("authentik_service_connection_kubernetes", func(r *config.Resource) {
 		r.ShortGroup = shortGroup

@@ -1788,6 +1788,16 @@ func (in *OutpostInitParameters) DeepCopyInto(out *OutpostInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ServiceConnectionRef != nil {
+		in, out := &in.ServiceConnectionRef, &out.ServiceConnectionRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ServiceConnectionSelector != nil {
+		in, out := &in.ServiceConnectionSelector, &out.ServiceConnectionSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type
 		*out = new(string)
@@ -1916,6 +1926,16 @@ func (in *OutpostParameters) DeepCopyInto(out *OutpostParameters) {
 		in, out := &in.ServiceConnection, &out.ServiceConnection
 		*out = new(string)
 		**out = **in
+	}
+	if in.ServiceConnectionRef != nil {
+		in, out := &in.ServiceConnectionRef, &out.ServiceConnectionRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ServiceConnectionSelector != nil {
+		in, out := &in.ServiceConnectionSelector, &out.ServiceConnectionSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type
