@@ -9,8 +9,8 @@ import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
 	resource "github.com/crossplane/upjet/pkg/resource"
-	errors "github.com/pkg/errors"
 	v1alpha1 "github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1"
+	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
