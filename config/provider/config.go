@@ -104,7 +104,7 @@ func Configure(p *config.Provider) {
 		r.References["signing_key"] = base.CertificateKeyPairRef
 		r.References["encryption_key"] = base.CertificateKeyPairRef
 
-		// r.References["property_mappings"] = base Prop
+		r.References["property_mappings"] = base.PropertyMappingProviderScopeRef
 	})
 	p.AddResourceConfigurator("authentik_provider_proxy", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
@@ -114,6 +114,7 @@ func Configure(p *config.Provider) {
 		r.References["authentication_flow"] = base.FlowRef
 		r.References["invalidation_flow"] = base.FlowRef
 
+		r.References["property_mappings"] = base.PropertyMappingProviderScopeRef
 	})
 	p.AddResourceConfigurator("authentik_provider_rac", func(r *config.Resource) {
 		r.ShortGroup = shortGroup

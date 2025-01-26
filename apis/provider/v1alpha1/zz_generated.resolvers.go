@@ -10,6 +10,7 @@ import (
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
 	resource "github.com/crossplane/upjet/pkg/resource"
 	v1alpha1 "github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1"
+	v1alpha11 "github.com/felixz92/crossplane-provider-authentik/apis/propertymapping/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -19,6 +20,7 @@ func (mg *OAuth2) ResolveReferences(ctx context.Context, c client.Reader) error 
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
+	var mrsp reference.MultiResolutionResponse
 	var err error
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
@@ -84,6 +86,22 @@ func (mg *OAuth2) ResolveReferences(ctx context.Context, c client.Reader) error 
 	}
 	mg.Spec.ForProvider.InvalidationFlow = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.InvalidationFlowRef = rsp.ResolvedReference
+
+	mrsp, err = r.ResolveMultiple(ctx, reference.MultiResolutionRequest{
+		CurrentValues: reference.FromPtrValues(mg.Spec.ForProvider.PropertyMappings),
+		Extract:       resource.ExtractParamPath("id", true),
+		References:    mg.Spec.ForProvider.PropertyMappingsRefs,
+		Selector:      mg.Spec.ForProvider.PropertyMappingsSelector,
+		To: reference.To{
+			List:    &v1alpha11.ProviderScopeList{},
+			Managed: &v1alpha11.ProviderScope{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.PropertyMappings")
+	}
+	mg.Spec.ForProvider.PropertyMappings = reference.ToPtrValues(mrsp.ResolvedValues)
+	mg.Spec.ForProvider.PropertyMappingsRefs = mrsp.ResolvedReferences
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SigningKey),
@@ -165,6 +183,22 @@ func (mg *OAuth2) ResolveReferences(ctx context.Context, c client.Reader) error 
 	mg.Spec.InitProvider.InvalidationFlow = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.InvalidationFlowRef = rsp.ResolvedReference
 
+	mrsp, err = r.ResolveMultiple(ctx, reference.MultiResolutionRequest{
+		CurrentValues: reference.FromPtrValues(mg.Spec.InitProvider.PropertyMappings),
+		Extract:       resource.ExtractParamPath("id", true),
+		References:    mg.Spec.InitProvider.PropertyMappingsRefs,
+		Selector:      mg.Spec.InitProvider.PropertyMappingsSelector,
+		To: reference.To{
+			List:    &v1alpha11.ProviderScopeList{},
+			Managed: &v1alpha11.ProviderScope{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.PropertyMappings")
+	}
+	mg.Spec.InitProvider.PropertyMappings = reference.ToPtrValues(mrsp.ResolvedValues)
+	mg.Spec.InitProvider.PropertyMappingsRefs = mrsp.ResolvedReferences
+
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.SigningKey),
 		Extract:      resource.ExtractParamPath("id", true),
@@ -189,6 +223,7 @@ func (mg *Proxy) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
+	var mrsp reference.MultiResolutionResponse
 	var err error
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
@@ -239,6 +274,22 @@ func (mg *Proxy) ResolveReferences(ctx context.Context, c client.Reader) error {
 	mg.Spec.ForProvider.InvalidationFlow = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.InvalidationFlowRef = rsp.ResolvedReference
 
+	mrsp, err = r.ResolveMultiple(ctx, reference.MultiResolutionRequest{
+		CurrentValues: reference.FromPtrValues(mg.Spec.ForProvider.PropertyMappings),
+		Extract:       resource.ExtractParamPath("id", true),
+		References:    mg.Spec.ForProvider.PropertyMappingsRefs,
+		Selector:      mg.Spec.ForProvider.PropertyMappingsSelector,
+		To: reference.To{
+			List:    &v1alpha11.ProviderScopeList{},
+			Managed: &v1alpha11.ProviderScope{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.PropertyMappings")
+	}
+	mg.Spec.ForProvider.PropertyMappings = reference.ToPtrValues(mrsp.ResolvedValues)
+	mg.Spec.ForProvider.PropertyMappingsRefs = mrsp.ResolvedReferences
+
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AuthenticationFlow),
 		Extract:      resource.ExtractParamPath("uuid", true),
@@ -286,6 +337,22 @@ func (mg *Proxy) ResolveReferences(ctx context.Context, c client.Reader) error {
 	}
 	mg.Spec.InitProvider.InvalidationFlow = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.InvalidationFlowRef = rsp.ResolvedReference
+
+	mrsp, err = r.ResolveMultiple(ctx, reference.MultiResolutionRequest{
+		CurrentValues: reference.FromPtrValues(mg.Spec.InitProvider.PropertyMappings),
+		Extract:       resource.ExtractParamPath("id", true),
+		References:    mg.Spec.InitProvider.PropertyMappingsRefs,
+		Selector:      mg.Spec.InitProvider.PropertyMappingsSelector,
+		To: reference.To{
+			List:    &v1alpha11.ProviderScopeList{},
+			Managed: &v1alpha11.ProviderScope{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.PropertyMappings")
+	}
+	mg.Spec.InitProvider.PropertyMappings = reference.ToPtrValues(mrsp.ResolvedValues)
+	mg.Spec.InitProvider.PropertyMappingsRefs = mrsp.ResolvedReferences
 
 	return nil
 }

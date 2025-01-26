@@ -1165,6 +1165,18 @@ func (in *OAuth2InitParameters) DeepCopyInto(out *OAuth2InitParameters) {
 			}
 		}
 	}
+	if in.PropertyMappingsRefs != nil {
+		in, out := &in.PropertyMappingsRefs, &out.PropertyMappingsRefs
+		*out = make([]v1.Reference, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
+	if in.PropertyMappingsSelector != nil {
+		in, out := &in.PropertyMappingsSelector, &out.PropertyMappingsSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.RefreshTokenValidity != nil {
 		in, out := &in.RefreshTokenValidity, &out.RefreshTokenValidity
 		*out = new(string)
@@ -1559,6 +1571,18 @@ func (in *OAuth2Parameters) DeepCopyInto(out *OAuth2Parameters) {
 			}
 		}
 	}
+	if in.PropertyMappingsRefs != nil {
+		in, out := &in.PropertyMappingsRefs, &out.PropertyMappingsRefs
+		*out = make([]v1.Reference, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
+	if in.PropertyMappingsSelector != nil {
+		in, out := &in.PropertyMappingsSelector, &out.PropertyMappingsSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.RefreshTokenValidity != nil {
 		in, out := &in.RefreshTokenValidity, &out.RefreshTokenValidity
 		*out = new(string)
@@ -1804,6 +1828,18 @@ func (in *ProxyInitParameters) DeepCopyInto(out *ProxyInitParameters) {
 				**out = **in
 			}
 		}
+	}
+	if in.PropertyMappingsRefs != nil {
+		in, out := &in.PropertyMappingsRefs, &out.PropertyMappingsRefs
+		*out = make([]v1.Reference, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
+	if in.PropertyMappingsSelector != nil {
+		in, out := &in.PropertyMappingsSelector, &out.PropertyMappingsSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.RefreshTokenValidity != nil {
 		in, out := &in.RefreshTokenValidity, &out.RefreshTokenValidity
@@ -2154,6 +2190,18 @@ func (in *ProxyParameters) DeepCopyInto(out *ProxyParameters) {
 				**out = **in
 			}
 		}
+	}
+	if in.PropertyMappingsRefs != nil {
+		in, out := &in.PropertyMappingsRefs, &out.PropertyMappingsRefs
+		*out = make([]v1.Reference, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
+	if in.PropertyMappingsSelector != nil {
+		in, out := &in.PropertyMappingsSelector, &out.PropertyMappingsSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.RefreshTokenValidity != nil {
 		in, out := &in.RefreshTokenValidity, &out.RefreshTokenValidity
