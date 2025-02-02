@@ -383,6 +383,16 @@ func (in *LDAPInitParameters) DeepCopyInto(out *LDAPInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.BindFlowRef != nil {
+		in, out := &in.BindFlowRef, &out.BindFlowRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.BindFlowSelector != nil {
+		in, out := &in.BindFlowSelector, &out.BindFlowSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.BindMode != nil {
 		in, out := &in.BindMode, &out.BindMode
 		*out = new(string)
@@ -392,6 +402,16 @@ func (in *LDAPInitParameters) DeepCopyInto(out *LDAPInitParameters) {
 		in, out := &in.Certificate, &out.Certificate
 		*out = new(string)
 		**out = **in
+	}
+	if in.CertificateRef != nil {
+		in, out := &in.CertificateRef, &out.CertificateRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.CertificateSelector != nil {
+		in, out := &in.CertificateSelector, &out.CertificateSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.GIDStartNumber != nil {
 		in, out := &in.GIDStartNumber, &out.GIDStartNumber
@@ -427,6 +447,16 @@ func (in *LDAPInitParameters) DeepCopyInto(out *LDAPInitParameters) {
 		in, out := &in.UnbindFlow, &out.UnbindFlow
 		*out = new(string)
 		**out = **in
+	}
+	if in.UnbindFlowRef != nil {
+		in, out := &in.UnbindFlowRef, &out.UnbindFlowRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.UnbindFlowSelector != nil {
+		in, out := &in.UnbindFlowSelector, &out.UnbindFlowSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -560,6 +590,16 @@ func (in *LDAPParameters) DeepCopyInto(out *LDAPParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.BindFlowRef != nil {
+		in, out := &in.BindFlowRef, &out.BindFlowRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.BindFlowSelector != nil {
+		in, out := &in.BindFlowSelector, &out.BindFlowSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.BindMode != nil {
 		in, out := &in.BindMode, &out.BindMode
 		*out = new(string)
@@ -569,6 +609,16 @@ func (in *LDAPParameters) DeepCopyInto(out *LDAPParameters) {
 		in, out := &in.Certificate, &out.Certificate
 		*out = new(string)
 		**out = **in
+	}
+	if in.CertificateRef != nil {
+		in, out := &in.CertificateRef, &out.CertificateRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.CertificateSelector != nil {
+		in, out := &in.CertificateSelector, &out.CertificateSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.GIDStartNumber != nil {
 		in, out := &in.GIDStartNumber, &out.GIDStartNumber
@@ -604,6 +654,16 @@ func (in *LDAPParameters) DeepCopyInto(out *LDAPParameters) {
 		in, out := &in.UnbindFlow, &out.UnbindFlow
 		*out = new(string)
 		**out = **in
+	}
+	if in.UnbindFlowRef != nil {
+		in, out := &in.UnbindFlowRef, &out.UnbindFlowRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.UnbindFlowSelector != nil {
+		in, out := &in.UnbindFlowSelector, &out.UnbindFlowSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 }
 

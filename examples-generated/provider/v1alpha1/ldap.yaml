@@ -9,7 +9,9 @@ metadata:
 spec:
   forProvider:
     baseDn: dc=ldap,dc=goauthentik,dc=io
-    bindFlow: ${data.authentik_flow.default-authentication-flow.id}
+    bindFlowSelector:
+      matchLabels:
+        testing.upbound.io/example-name: authentik_flow
     name: ldap-app
 
 ---

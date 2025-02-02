@@ -15,6 +15,112 @@ import (
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
+// ResolveReferences of this LDAP.
+func (mg *LDAP) ResolveReferences(ctx context.Context, c client.Reader) error {
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.BindFlow),
+		Extract:      resource.ExtractParamPath("uuid", true),
+		Reference:    mg.Spec.ForProvider.BindFlowRef,
+		Selector:     mg.Spec.ForProvider.BindFlowSelector,
+		To: reference.To{
+			List:    &v1alpha1.FlowList{},
+			Managed: &v1alpha1.Flow{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.BindFlow")
+	}
+	mg.Spec.ForProvider.BindFlow = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.BindFlowRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.Certificate),
+		Extract:      resource.ExtractParamPath("id", true),
+		Reference:    mg.Spec.ForProvider.CertificateRef,
+		Selector:     mg.Spec.ForProvider.CertificateSelector,
+		To: reference.To{
+			List:    &v1alpha1.CertificateKeyPairList{},
+			Managed: &v1alpha1.CertificateKeyPair{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.Certificate")
+	}
+	mg.Spec.ForProvider.Certificate = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CertificateRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.UnbindFlow),
+		Extract:      resource.ExtractParamPath("uuid", true),
+		Reference:    mg.Spec.ForProvider.UnbindFlowRef,
+		Selector:     mg.Spec.ForProvider.UnbindFlowSelector,
+		To: reference.To{
+			List:    &v1alpha1.FlowList{},
+			Managed: &v1alpha1.Flow{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.UnbindFlow")
+	}
+	mg.Spec.ForProvider.UnbindFlow = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.UnbindFlowRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.BindFlow),
+		Extract:      resource.ExtractParamPath("uuid", true),
+		Reference:    mg.Spec.InitProvider.BindFlowRef,
+		Selector:     mg.Spec.InitProvider.BindFlowSelector,
+		To: reference.To{
+			List:    &v1alpha1.FlowList{},
+			Managed: &v1alpha1.Flow{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.BindFlow")
+	}
+	mg.Spec.InitProvider.BindFlow = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.BindFlowRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.Certificate),
+		Extract:      resource.ExtractParamPath("id", true),
+		Reference:    mg.Spec.InitProvider.CertificateRef,
+		Selector:     mg.Spec.InitProvider.CertificateSelector,
+		To: reference.To{
+			List:    &v1alpha1.CertificateKeyPairList{},
+			Managed: &v1alpha1.CertificateKeyPair{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.Certificate")
+	}
+	mg.Spec.InitProvider.Certificate = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CertificateRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.UnbindFlow),
+		Extract:      resource.ExtractParamPath("uuid", true),
+		Reference:    mg.Spec.InitProvider.UnbindFlowRef,
+		Selector:     mg.Spec.InitProvider.UnbindFlowSelector,
+		To: reference.To{
+			List:    &v1alpha1.FlowList{},
+			Managed: &v1alpha1.Flow{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.UnbindFlow")
+	}
+	mg.Spec.InitProvider.UnbindFlow = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.UnbindFlowRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this OAuth2.
 func (mg *OAuth2) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)

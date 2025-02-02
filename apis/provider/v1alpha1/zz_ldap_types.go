@@ -19,14 +19,34 @@ type LDAPInitParameters struct {
 	BaseDn *string `json:"baseDn,omitempty" tf:"base_dn,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.Flow
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("uuid",true)
 	BindFlow *string `json:"bindFlow,omitempty" tf:"bind_flow,omitempty"`
+
+	// Reference to a Flow in authentik to populate bindFlow.
+	// +kubebuilder:validation:Optional
+	BindFlowRef *v1.Reference `json:"bindFlowRef,omitempty" tf:"-"`
+
+	// Selector for a Flow in authentik to populate bindFlow.
+	// +kubebuilder:validation:Optional
+	BindFlowSelector *v1.Selector `json:"bindFlowSelector,omitempty" tf:"-"`
 
 	// (String) Defaults to direct.
 	// Defaults to `direct`.
 	BindMode *string `json:"bindMode,omitempty" tf:"bind_mode,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.CertificateKeyPair
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
+
+	// Reference to a CertificateKeyPair in authentik to populate certificate.
+	// +kubebuilder:validation:Optional
+	CertificateRef *v1.Reference `json:"certificateRef,omitempty" tf:"-"`
+
+	// Selector for a CertificateKeyPair in authentik to populate certificate.
+	// +kubebuilder:validation:Optional
+	CertificateSelector *v1.Selector `json:"certificateSelector,omitempty" tf:"-"`
 
 	// (Number) Defaults to 4000.
 	// Defaults to `4000`.
@@ -51,7 +71,17 @@ type LDAPInitParameters struct {
 	UIDStartNumber *float64 `json:"uidStartNumber,omitempty" tf:"uid_start_number,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.Flow
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("uuid",true)
 	UnbindFlow *string `json:"unbindFlow,omitempty" tf:"unbind_flow,omitempty"`
+
+	// Reference to a Flow in authentik to populate unbindFlow.
+	// +kubebuilder:validation:Optional
+	UnbindFlowRef *v1.Reference `json:"unbindFlowRef,omitempty" tf:"-"`
+
+	// Selector for a Flow in authentik to populate unbindFlow.
+	// +kubebuilder:validation:Optional
+	UnbindFlowSelector *v1.Selector `json:"unbindFlowSelector,omitempty" tf:"-"`
 }
 
 type LDAPObservation struct {
@@ -105,8 +135,18 @@ type LDAPParameters struct {
 	BaseDn *string `json:"baseDn,omitempty" tf:"base_dn,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.Flow
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("uuid",true)
 	// +kubebuilder:validation:Optional
 	BindFlow *string `json:"bindFlow,omitempty" tf:"bind_flow,omitempty"`
+
+	// Reference to a Flow in authentik to populate bindFlow.
+	// +kubebuilder:validation:Optional
+	BindFlowRef *v1.Reference `json:"bindFlowRef,omitempty" tf:"-"`
+
+	// Selector for a Flow in authentik to populate bindFlow.
+	// +kubebuilder:validation:Optional
+	BindFlowSelector *v1.Selector `json:"bindFlowSelector,omitempty" tf:"-"`
 
 	// (String) Defaults to direct.
 	// Defaults to `direct`.
@@ -114,8 +154,18 @@ type LDAPParameters struct {
 	BindMode *string `json:"bindMode,omitempty" tf:"bind_mode,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.CertificateKeyPair
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	// +kubebuilder:validation:Optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate,omitempty"`
+
+	// Reference to a CertificateKeyPair in authentik to populate certificate.
+	// +kubebuilder:validation:Optional
+	CertificateRef *v1.Reference `json:"certificateRef,omitempty" tf:"-"`
+
+	// Selector for a CertificateKeyPair in authentik to populate certificate.
+	// +kubebuilder:validation:Optional
+	CertificateSelector *v1.Selector `json:"certificateSelector,omitempty" tf:"-"`
 
 	// (Number) Defaults to 4000.
 	// Defaults to `4000`.
@@ -146,8 +196,18 @@ type LDAPParameters struct {
 	UIDStartNumber *float64 `json:"uidStartNumber,omitempty" tf:"uid_start_number,omitempty"`
 
 	// (String)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1.Flow
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("uuid",true)
 	// +kubebuilder:validation:Optional
 	UnbindFlow *string `json:"unbindFlow,omitempty" tf:"unbind_flow,omitempty"`
+
+	// Reference to a Flow in authentik to populate unbindFlow.
+	// +kubebuilder:validation:Optional
+	UnbindFlowRef *v1.Reference `json:"unbindFlowRef,omitempty" tf:"-"`
+
+	// Selector for a Flow in authentik to populate unbindFlow.
+	// +kubebuilder:validation:Optional
+	UnbindFlowSelector *v1.Selector `json:"unbindFlowSelector,omitempty" tf:"-"`
 }
 
 // LDAPSpec defines the desired state of LDAP
@@ -187,9 +247,7 @@ type LDAP struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.baseDn) || (has(self.initProvider) && has(self.initProvider.baseDn))",message="spec.forProvider.baseDn is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.bindFlow) || (has(self.initProvider) && has(self.initProvider.bindFlow))",message="spec.forProvider.bindFlow is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.name) || (has(self.initProvider) && has(self.initProvider.name))",message="spec.forProvider.name is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.unbindFlow) || (has(self.initProvider) && has(self.initProvider.unbindFlow))",message="spec.forProvider.unbindFlow is a required parameter"
 	Spec   LDAPSpec   `json:"spec"`
 	Status LDAPStatus `json:"status,omitempty"`
 }

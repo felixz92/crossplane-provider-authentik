@@ -85,7 +85,9 @@ func Configure(p *config.Provider) {
 		r.ShortGroup = shortGroup
 		r.Kind = "LDAP"
 
-		r.References["authorization_flow"] = base.FlowRef
+		r.References["bind_flow"] = base.FlowRef
+		r.References["unbind_flow"] = base.FlowRef
+		r.References["certificate"] = base.CertificateKeyPairRef
 	})
 	p.AddResourceConfigurator("authentik_provider_microsoft_entra", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
