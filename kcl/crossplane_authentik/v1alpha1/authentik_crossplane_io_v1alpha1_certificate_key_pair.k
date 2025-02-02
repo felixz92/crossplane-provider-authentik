@@ -94,8 +94,8 @@ schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProvider:
 
     Attributes
     ----------
-    certificateData : str, default is Undefined, optional
-        (String)
+    certificateDataSecretRef : AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProviderCertificateDataSecretRef, default is Undefined, optional
+        certificate data secret ref
     keyDataSecretRef : AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProviderKeyDataSecretRef, default is Undefined, optional
         key data secret ref
     name : str, default is Undefined, optional
@@ -103,11 +103,33 @@ schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProvider:
     """
 
 
-    certificateData?: str
+    certificateDataSecretRef?: AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProviderCertificateDataSecretRef
 
     keyDataSecretRef?: AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProviderKeyDataSecretRef
 
     name?: str
+
+
+schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProviderCertificateDataSecretRef:
+    r"""
+    (String)
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
 
 
 schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecForProviderKeyDataSecretRef:
@@ -147,8 +169,8 @@ schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProvider:
 
     Attributes
     ----------
-    certificateData : str, default is Undefined, optional
-        (String)
+    certificateDataSecretRef : AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProviderCertificateDataSecretRef, default is Undefined, required
+        certificate data secret ref
     keyDataSecretRef : AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProviderKeyDataSecretRef, default is Undefined, optional
         key data secret ref
     name : str, default is Undefined, optional
@@ -156,11 +178,33 @@ schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProvider:
     """
 
 
-    certificateData?: str
+    certificateDataSecretRef: AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProviderCertificateDataSecretRef
 
     keyDataSecretRef?: AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProviderKeyDataSecretRef
 
     name?: str
+
+
+schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProviderCertificateDataSecretRef:
+    r"""
+    (String)
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
 
 
 schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairSpecInitProviderKeyDataSecretRef:
@@ -380,16 +424,12 @@ schema AuthentikCrossplaneIoV1alpha1CertificateKeyPairStatusAtProvider:
 
     Attributes
     ----------
-    certificateData : str, default is Undefined, optional
-        (String)
     id : str, default is Undefined, optional
         (String) The ID of this resource.
     name : str, default is Undefined, optional
         (String)
     """
 
-
-    certificateData?: str
 
     id?: str
 

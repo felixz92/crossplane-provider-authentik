@@ -267,6 +267,6 @@ vendor.check: go.vendor.check
 
 kcl:
 	cd kcl && kcl import -m crd -p crossplane_authentik -s -f ../package/crds
-	cd kcl && for f in ls *.k  ; do if [[ $f != authentik* ]] ; then prefix="$(echo $f | cut -d'_' -f1)"; echo $prefix && mkdir -p ../$prefix/v1alpha1 && mv $f ../$prefix/v1alpha1/  ; fi  ; done
+	cd kcl/crossplane_authentik/v1alpha1 && for f in ls *.k  ; do if [[ $f != authentik* ]] ; then prefix="$(echo $f | cut -d'_' -f1)"; echo $prefix && mkdir -p ../$prefix/v1alpha1 && mv $f ../$prefix/v1alpha1/  ; fi  ; done
 
 .PHONY: kcl
