@@ -16,7 +16,7 @@ import (
 type CertificateKeyPairInitParameters struct {
 
 	// (String)
-	CertificateData *string `json:"certificateData,omitempty" tf:"certificate_data,omitempty"`
+	CertificateDataSecretRef v1.SecretKeySelector `json:"certificateDataSecretRef" tf:"-"`
 
 	// (String, Sensitive)
 	KeyDataSecretRef *v1.SecretKeySelector `json:"keyDataSecretRef,omitempty" tf:"-"`
@@ -26,9 +26,6 @@ type CertificateKeyPairInitParameters struct {
 }
 
 type CertificateKeyPairObservation struct {
-
-	// (String)
-	CertificateData *string `json:"certificateData,omitempty" tf:"certificate_data,omitempty"`
 
 	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -41,7 +38,7 @@ type CertificateKeyPairParameters struct {
 
 	// (String)
 	// +kubebuilder:validation:Optional
-	CertificateData *string `json:"certificateData,omitempty" tf:"certificate_data,omitempty"`
+	CertificateDataSecretRef v1.SecretKeySelector `json:"certificateDataSecretRef" tf:"-"`
 
 	// (String, Sensitive)
 	// +kubebuilder:validation:Optional
@@ -88,7 +85,7 @@ type CertificateKeyPairStatus struct {
 type CertificateKeyPair struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.certificateData) || (has(self.initProvider) && has(self.initProvider.certificateData))",message="spec.forProvider.certificateData is a required parameter"
+	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.certificateDataSecretRef)",message="spec.forProvider.certificateDataSecretRef is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.name) || (has(self.initProvider) && has(self.initProvider.name))",message="spec.forProvider.name is a required parameter"
 	Spec   CertificateKeyPairSpec   `json:"spec"`
 	Status CertificateKeyPairStatus `json:"status,omitempty"`

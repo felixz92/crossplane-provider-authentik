@@ -105,6 +105,10 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_certificate_key_pair", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "CertificateKeyPair"
+
+		if s, ok := r.TerraformResource.Schema["certificate_data"]; ok {
+			s.Sensitive = true
+		}
 	})
 	p.AddResourceConfigurator("authentik_tenant", func(r *config.Resource) {
 		r.ShortGroup = shortGroup

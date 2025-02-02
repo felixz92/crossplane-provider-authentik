@@ -73,9 +73,23 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  certificateData:
+                  certificateDataSecretRef:
                     description: (String)
-                    type: string
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: Name of the secret.
+                        type: string
+                      namespace:
+                        description: Namespace of the secret.
+                        type: string
+                    required:
+                    - key
+                    - name
+                    - namespace
+                    type: object
                   keyDataSecretRef:
                     description: (String, Sensitive)
                     properties:
@@ -110,9 +124,23 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
-                  certificateData:
+                  certificateDataSecretRef:
                     description: (String)
-                    type: string
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: Name of the secret.
+                        type: string
+                      namespace:
+                        description: Namespace of the secret.
+                        type: string
+                    required:
+                    - key
+                    - name
+                    - namespace
+                    type: object
                   keyDataSecretRef:
                     description: (String, Sensitive)
                     properties:
@@ -133,6 +161,8 @@ spec:
                   name:
                     description: (String)
                     type: string
+                required:
+                - certificateDataSecretRef
                 type: object
               managementPolicies:
                 default:
@@ -302,10 +332,9 @@ spec:
             - forProvider
             type: object
             x-kubernetes-validations:
-            - message: spec.forProvider.certificateData is a required parameter
+            - message: spec.forProvider.certificateDataSecretRef is a required parameter
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.certificateData)
-                || (has(self.initProvider) && has(self.initProvider.certificateData))'
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.certificateDataSecretRef)'
             - message: spec.forProvider.name is a required parameter
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.name)
@@ -315,9 +344,6 @@ spec:
             properties:
               atProvider:
                 properties:
-                  certificateData:
-                    description: (String)
-                    type: string
                   id:
                     description: (String) The ID of this resource.
                     type: string
