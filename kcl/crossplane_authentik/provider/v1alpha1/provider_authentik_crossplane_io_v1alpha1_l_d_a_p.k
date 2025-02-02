@@ -98,11 +98,19 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProvider:
         (String)
     bindFlow : str, default is Undefined, optional
         (String)
+    bindFlowRef : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowRef, default is Undefined, optional
+        bind flow ref
+    bindFlowSelector : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowSelector, default is Undefined, optional
+        bind flow selector
     bindMode : str, default is Undefined, optional
         (String) Defaults to direct.
         Defaults to `direct`.
     certificate : str, default is Undefined, optional
         (String)
+    certificateRef : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateRef, default is Undefined, optional
+        certificate ref
+    certificateSelector : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateSelector, default is Undefined, optional
+        certificate selector
     gidStartNumber : float, default is Undefined, optional
         (Number) Defaults to 4000.
         Defaults to `4000`.
@@ -121,6 +129,10 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProvider:
         Defaults to `2000`.
     unbindFlow : str, default is Undefined, optional
         (String)
+    unbindFlowRef : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowRef, default is Undefined, optional
+        unbind flow ref
+    unbindFlowSelector : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowSelector, default is Undefined, optional
+        unbind flow selector
     """
 
 
@@ -128,9 +140,17 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProvider:
 
     bindFlow?: str
 
+    bindFlowRef?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowRef
+
+    bindFlowSelector?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowSelector
+
     bindMode?: str
 
     certificate?: str
+
+    certificateRef?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateRef
+
+    certificateSelector?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateSelector
 
     gidStartNumber?: float
 
@@ -145,6 +165,277 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProvider:
     uidStartNumber?: float
 
     unbindFlow?: str
+
+    unbindFlowRef?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowRef
+
+    unbindFlowSelector?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowSelector
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowRef:
+    r"""
+    Reference to a Flow in authentik to populate bindFlow.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowRefPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowSelector:
+    r"""
+    Selector for a Flow in authentik to populate bindFlow.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowSelectorPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderBindFlowSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateRef:
+    r"""
+    Reference to a CertificateKeyPair in authentik to populate certificate.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateRefPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateSelector:
+    r"""
+    Selector for a CertificateKeyPair in authentik to populate certificate.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateSelectorPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderCertificateSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowRef:
+    r"""
+    Reference to a Flow in authentik to populate unbindFlow.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowRefPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowSelector:
+    r"""
+    Selector for a Flow in authentik to populate unbindFlow.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowSelectorPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecForProviderUnbindFlowSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProvider:
@@ -166,11 +457,19 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProvider:
         (String)
     bindFlow : str, default is Undefined, optional
         (String)
+    bindFlowRef : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowRef, default is Undefined, optional
+        bind flow ref
+    bindFlowSelector : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowSelector, default is Undefined, optional
+        bind flow selector
     bindMode : str, default is Undefined, optional
         (String) Defaults to direct.
         Defaults to `direct`.
     certificate : str, default is Undefined, optional
         (String)
+    certificateRef : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateRef, default is Undefined, optional
+        certificate ref
+    certificateSelector : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateSelector, default is Undefined, optional
+        certificate selector
     gidStartNumber : float, default is Undefined, optional
         (Number) Defaults to 4000.
         Defaults to `4000`.
@@ -189,6 +488,10 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProvider:
         Defaults to `2000`.
     unbindFlow : str, default is Undefined, optional
         (String)
+    unbindFlowRef : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowRef, default is Undefined, optional
+        unbind flow ref
+    unbindFlowSelector : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowSelector, default is Undefined, optional
+        unbind flow selector
     """
 
 
@@ -196,9 +499,17 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProvider:
 
     bindFlow?: str
 
+    bindFlowRef?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowRef
+
+    bindFlowSelector?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowSelector
+
     bindMode?: str
 
     certificate?: str
+
+    certificateRef?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateRef
+
+    certificateSelector?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateSelector
 
     gidStartNumber?: float
 
@@ -213,6 +524,277 @@ schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProvider:
     uidStartNumber?: float
 
     unbindFlow?: str
+
+    unbindFlowRef?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowRef
+
+    unbindFlowSelector?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowSelector
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowRef:
+    r"""
+    Reference to a Flow in authentik to populate bindFlow.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowRefPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowSelector:
+    r"""
+    Selector for a Flow in authentik to populate bindFlow.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowSelectorPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderBindFlowSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateRef:
+    r"""
+    Reference to a CertificateKeyPair in authentik to populate certificate.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateRefPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateSelector:
+    r"""
+    Selector for a CertificateKeyPair in authentik to populate certificate.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateSelectorPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderCertificateSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowRef:
+    r"""
+    Reference to a Flow in authentik to populate unbindFlow.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowRefPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowSelector:
+    r"""
+    Selector for a Flow in authentik to populate unbindFlow.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowSelectorPolicy
+
+
+schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecInitProviderUnbindFlowSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema ProviderAuthentikCrossplaneIoV1alpha1LDAPSpecProviderConfigRef:
