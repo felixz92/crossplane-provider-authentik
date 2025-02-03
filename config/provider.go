@@ -7,13 +7,13 @@ package config
 import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
-
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 	"github.com/felixz92/crossplane-provider-authentik/config/base"
 	"github.com/felixz92/crossplane-provider-authentik/config/directory"
 	"github.com/felixz92/crossplane-provider-authentik/config/policy"
 	"github.com/felixz92/crossplane-provider-authentik/config/propertymapping"
 	"github.com/felixz92/crossplane-provider-authentik/config/provider"
+	"github.com/felixz92/crossplane-provider-authentik/config/rbac"
 	"github.com/felixz92/crossplane-provider-authentik/config/stage"
 )
 
@@ -48,6 +48,7 @@ func GetProvider(generationProvider bool) (*ujconfig.Provider, error) {
 		propertymapping.Configure,
 		provider.Configure,
 		stage.Configure,
+		rbac.Configure,
 	} {
 		configure(pc)
 	}

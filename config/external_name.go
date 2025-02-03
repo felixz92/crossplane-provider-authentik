@@ -94,6 +94,10 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"authentik_stage_user_login":                  config.IdentifierFromProvider,
 	"authentik_stage_user_logout":                 config.IdentifierFromProvider,
 	"authentik_stage_user_write":                  config.IdentifierFromProvider,
+
+	"authentik_rbac_permission_role": config.IdentifierFromProvider,
+	"authentik_rbac_permission_user": config.IdentifierFromProvider,
+	"authentik_rbac_role":            config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the

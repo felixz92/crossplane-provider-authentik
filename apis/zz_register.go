@@ -15,6 +15,7 @@ import (
 	v1alpha1policy "github.com/felixz92/crossplane-provider-authentik/apis/policy/v1alpha1"
 	v1alpha1propertymapping "github.com/felixz92/crossplane-provider-authentik/apis/propertymapping/v1alpha1"
 	v1alpha1provider "github.com/felixz92/crossplane-provider-authentik/apis/provider/v1alpha1"
+	v1alpha1rbac "github.com/felixz92/crossplane-provider-authentik/apis/rbac/v1alpha1"
 	v1alpha1stage "github.com/felixz92/crossplane-provider-authentik/apis/stage/v1alpha1"
 	v1alpha1apis "github.com/felixz92/crossplane-provider-authentik/apis/v1alpha1"
 	v1beta1 "github.com/felixz92/crossplane-provider-authentik/apis/v1beta1"
@@ -28,6 +29,7 @@ func init() {
 		v1alpha1policy.SchemeBuilder.AddToScheme,
 		v1alpha1propertymapping.SchemeBuilder.AddToScheme,
 		v1alpha1provider.SchemeBuilder.AddToScheme,
+		v1alpha1rbac.SchemeBuilder.AddToScheme,
 		v1alpha1stage.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,

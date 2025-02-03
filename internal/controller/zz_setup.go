@@ -63,6 +63,9 @@ import (
 	samlprovider "github.com/felixz92/crossplane-provider-authentik/internal/controller/provider/saml"
 	scimprovider "github.com/felixz92/crossplane-provider-authentik/internal/controller/provider/scim"
 	providerconfig "github.com/felixz92/crossplane-provider-authentik/internal/controller/providerconfig"
+	role "github.com/felixz92/crossplane-provider-authentik/internal/controller/rbac/role"
+	rolepermission "github.com/felixz92/crossplane-provider-authentik/internal/controller/rbac/rolepermission"
+	userpermission "github.com/felixz92/crossplane-provider-authentik/internal/controller/rbac/userpermission"
 	authenticatorduo "github.com/felixz92/crossplane-provider-authentik/internal/controller/stage/authenticatorduo"
 	authenticatorendpointgdtc "github.com/felixz92/crossplane-provider-authentik/internal/controller/stage/authenticatorendpointgdtc"
 	authenticatorsms "github.com/felixz92/crossplane-provider-authentik/internal/controller/stage/authenticatorsms"
@@ -144,6 +147,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		samlprovider.Setup,
 		scimprovider.Setup,
 		providerconfig.Setup,
+		role.Setup,
+		rolepermission.Setup,
+		userpermission.Setup,
 		authenticatorduo.Setup,
 		authenticatorendpointgdtc.Setup,
 		authenticatorsms.Setup,
