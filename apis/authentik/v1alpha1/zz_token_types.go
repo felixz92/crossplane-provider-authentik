@@ -42,7 +42,17 @@ type TokenInitParameters struct {
 	RetrieveKey *bool `json:"retrieveKey,omitempty" tf:"retrieve_key,omitempty"`
 
 	// (Number)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/directory/v1alpha1.User
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	User *float64 `json:"user,omitempty" tf:"user,omitempty"`
+
+	// Reference to a User in directory to populate user.
+	// +kubebuilder:validation:Optional
+	UserRef *v1.Reference `json:"userRef,omitempty" tf:"-"`
+
+	// Selector for a User in directory to populate user.
+	// +kubebuilder:validation:Optional
+	UserSelector *v1.Selector `json:"userSelector,omitempty" tf:"-"`
 }
 
 type TokenObservation struct {
@@ -119,8 +129,18 @@ type TokenParameters struct {
 	RetrieveKey *bool `json:"retrieveKey,omitempty" tf:"retrieve_key,omitempty"`
 
 	// (Number)
+	// +crossplane:generate:reference:type=github.com/felixz92/crossplane-provider-authentik/apis/directory/v1alpha1.User
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	// +kubebuilder:validation:Optional
 	User *float64 `json:"user,omitempty" tf:"user,omitempty"`
+
+	// Reference to a User in directory to populate user.
+	// +kubebuilder:validation:Optional
+	UserRef *v1.Reference `json:"userRef,omitempty" tf:"-"`
+
+	// Selector for a User in directory to populate user.
+	// +kubebuilder:validation:Optional
+	UserSelector *v1.Selector `json:"userSelector,omitempty" tf:"-"`
 }
 
 // TokenSpec defines the desired state of Token
@@ -160,7 +180,6 @@ type Token struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.identifier) || (has(self.initProvider) && has(self.initProvider.identifier))",message="spec.forProvider.identifier is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.user) || (has(self.initProvider) && has(self.initProvider.user))",message="spec.forProvider.user is a required parameter"
 	Spec   TokenSpec   `json:"spec"`
 	Status TokenStatus `json:"status,omitempty"`
 }

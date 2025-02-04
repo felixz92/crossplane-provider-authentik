@@ -11,7 +11,9 @@ spec:
     description: My secret token
     expires: "2025-01-01T15:04:05Z"
     identifier: my-token
-    user: ${authentik_user.name.id}
+    userSelector:
+      matchLabels:
+        testing.upbound.io/example-name: name
 
 ---
 
