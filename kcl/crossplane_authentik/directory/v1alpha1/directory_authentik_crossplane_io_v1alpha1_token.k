@@ -11,31 +11,31 @@ schema Token:
 
     Attributes
     ----------
-    apiVersion : str, default is "authentik.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "directory.authentik.crossplane.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "Token", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : AuthentikCrossplaneIoV1alpha1TokenSpec, default is Undefined, required
+    spec : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpec, default is Undefined, required
         spec
-    status : AuthentikCrossplaneIoV1alpha1TokenStatus, default is Undefined, optional
+    status : DirectoryAuthentikCrossplaneIoV1alpha1TokenStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "authentik.crossplane.io/v1alpha1" = "authentik.crossplane.io/v1alpha1"
+    apiVersion: "directory.authentik.crossplane.io/v1alpha1" = "directory.authentik.crossplane.io/v1alpha1"
 
     kind: "Token" = "Token"
 
     metadata?: v1.ObjectMeta
 
-    spec: AuthentikCrossplaneIoV1alpha1TokenSpec
+    spec: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpec
 
-    status?: AuthentikCrossplaneIoV1alpha1TokenStatus
+    status?: DirectoryAuthentikCrossplaneIoV1alpha1TokenStatus
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpec:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpec:
     r"""
     TokenSpec defines the desired state of Token
 
@@ -49,9 +49,9 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpec:
         field in a future release. Currently, both could be set independently and
         non-default values would be honored if the feature flag is enabled.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
-    forProvider : AuthentikCrossplaneIoV1alpha1TokenSpecForProvider, default is Undefined, required
+    forProvider : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProvider, default is Undefined, required
         for provider
-    initProvider : AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider, default is Undefined, optional
+    initProvider : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProvider, default is Undefined, optional
         init provider
     managementPolicies : [str], default is ["*"], optional
         THIS IS A BETA FIELD. It is on by default but can be opted out
@@ -64,33 +64,33 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpec:
         custom, the DeletionPolicy field will be ignored.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
         and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
-    providerConfigRef : AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef, default is Undefined, optional
+    providerConfigRef : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    publishConnectionDetailsTo : AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo, default is Undefined, optional
+    publishConnectionDetailsTo : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo, default is Undefined, optional
         publish connection details to
-    writeConnectionSecretToRef : AuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef, default is Undefined, optional
+    writeConnectionSecretToRef : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
 
 
     deletionPolicy?: "Orphan" | "Delete" = "Delete"
 
-    forProvider: AuthentikCrossplaneIoV1alpha1TokenSpecForProvider
+    forProvider: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProvider
 
-    initProvider?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider
+    initProvider?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProvider
 
     managementPolicies?: [str] = ["*"]
 
-    providerConfigRef?: AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef
+    providerConfigRef?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef
 
-    publishConnectionDetailsTo?: AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo
+    publishConnectionDetailsTo?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo
 
-    writeConnectionSecretToRef?: AuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef
+    writeConnectionSecretToRef?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecForProvider:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProvider:
     r"""
-    authentik crossplane io v1alpha1 token spec for provider
+    directory authentik crossplane io v1alpha1 token spec for provider
 
     Attributes
     ----------
@@ -116,9 +116,9 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProvider:
         Defaults to `false`.
     user : float, default is Undefined, optional
         (Number)
-    userRef : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef, default is Undefined, optional
+    userRef : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef, default is Undefined, optional
         user ref
-    userSelector : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector, default is Undefined, optional
+    userSelector : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector, default is Undefined, optional
         user selector
     """
 
@@ -137,12 +137,12 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProvider:
 
     user?: float
 
-    userRef?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef
+    userRef?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef
 
-    userSelector?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector
+    userSelector?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef:
     r"""
     Reference to a User in directory to populate user.
 
@@ -150,17 +150,17 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy, default is Undefined, optional
+    policy : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy
+    policy?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy:
     r"""
     Policies for referencing.
 
@@ -184,7 +184,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector:
     r"""
     Selector for a User in directory to populate user.
 
@@ -195,7 +195,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy, default is Undefined, optional
+    policy : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -204,10 +204,10 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector:
 
     matchLabels?: {str:str}
 
-    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy
+    policy?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -231,7 +231,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
     unless the Management Policies feature flag is disabled.
@@ -268,9 +268,9 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
         Defaults to `false`.
     user : float, default is Undefined, optional
         (Number)
-    userRef : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef, default is Undefined, optional
+    userRef : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef, default is Undefined, optional
         user ref
-    userSelector : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector, default is Undefined, optional
+    userSelector : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector, default is Undefined, optional
         user selector
     """
 
@@ -289,12 +289,12 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
 
     user?: float
 
-    userRef?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef
+    userRef?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef
 
-    userSelector?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector
+    userSelector?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef:
     r"""
     Reference to a User in directory to populate user.
 
@@ -302,17 +302,17 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy, default is Undefined, optional
+    policy : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy
+    policy?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy:
     r"""
     Policies for referencing.
 
@@ -336,7 +336,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector:
     r"""
     Selector for a User in directory to populate user.
 
@@ -347,7 +347,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy, default is Undefined, optional
+    policy : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -356,10 +356,10 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector:
 
     matchLabels?: {str:str}
 
-    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy
+    policy?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -383,7 +383,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
     create, observe, update, and delete this managed resource should be
@@ -393,17 +393,17 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy, default is Undefined, optional
+    policy : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy
+    policy?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -427,7 +427,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo:
     r"""
     PublishConnectionDetailsTo specifies the connection secret config which
     contains a name, metadata and a reference to secret store config to
@@ -437,23 +437,23 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsTo:
 
     Attributes
     ----------
-    configRef : AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
+    configRef : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
         config ref
-    metadata : AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
+    metadata : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
         metadata
     name : str, default is Undefined, required
         Name is the name of the connection secret.
     """
 
 
-    configRef?: AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef
+    configRef?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef
 
-    metadata?: AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata
+    metadata?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata
 
     name: str
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef:
     r"""
     SecretStoreConfigRef specifies which secret store config should be used
     for this ConnectionSecret.
@@ -462,17 +462,17 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
+    policy : DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRefPolicy
+    policy?: DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRefPolicy
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRefPolicy:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -496,7 +496,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToConfigRef
     resolve?: "Always" | "IfNotPresent"
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata:
     r"""
     Metadata is the metadata for connection secret.
 
@@ -523,7 +523,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecPublishConnectionDetailsToMetadata:
     $type?: str
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
@@ -548,15 +548,15 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecWriteConnectionSecretToRef:
     namespace: str
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenStatus:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenStatus:
     r"""
     TokenStatus defines the observed state of Token.
 
     Attributes
     ----------
-    atProvider : AuthentikCrossplaneIoV1alpha1TokenStatusAtProvider, default is Undefined, optional
+    atProvider : DirectoryAuthentikCrossplaneIoV1alpha1TokenStatusAtProvider, default is Undefined, optional
         at provider
-    conditions : [AuthentikCrossplaneIoV1alpha1TokenStatusConditionsItems0], default is Undefined, optional
+    conditions : [DirectoryAuthentikCrossplaneIoV1alpha1TokenStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest metadata.generation
@@ -565,16 +565,16 @@ schema AuthentikCrossplaneIoV1alpha1TokenStatus:
     """
 
 
-    atProvider?: AuthentikCrossplaneIoV1alpha1TokenStatusAtProvider
+    atProvider?: DirectoryAuthentikCrossplaneIoV1alpha1TokenStatusAtProvider
 
-    conditions?: [AuthentikCrossplaneIoV1alpha1TokenStatusConditionsItems0]
+    conditions?: [DirectoryAuthentikCrossplaneIoV1alpha1TokenStatusConditionsItems0]
 
     observedGeneration?: int
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenStatusAtProvider:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenStatusAtProvider:
     r"""
-    authentik crossplane io v1alpha1 token status at provider
+    directory authentik crossplane io v1alpha1 token status at provider
 
     Attributes
     ----------
@@ -627,7 +627,7 @@ schema AuthentikCrossplaneIoV1alpha1TokenStatusAtProvider:
     user?: float
 
 
-schema AuthentikCrossplaneIoV1alpha1TokenStatusConditionsItems0:
+schema DirectoryAuthentikCrossplaneIoV1alpha1TokenStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 
