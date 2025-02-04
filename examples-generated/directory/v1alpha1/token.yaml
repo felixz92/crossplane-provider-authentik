@@ -1,8 +1,8 @@
-apiVersion: authentik.crossplane.io/v1alpha1
+apiVersion: directory.authentik.crossplane.io/v1alpha1
 kind: Token
 metadata:
   annotations:
-    meta.upbound.io/example-id: authentik/v1alpha1/token
+    meta.upbound.io/example-id: directory/v1alpha1/token
   labels:
     testing.upbound.io/example-name: default
   name: default
@@ -21,7 +21,7 @@ apiVersion: directory.authentik.crossplane.io/v1alpha1
 kind: User
 metadata:
   annotations:
-    meta.upbound.io/example-id: /v1alpha1/token
+    meta.upbound.io/example-id: directory/v1alpha1/token
   labels:
     testing.upbound.io/example-name: name
   name: name

@@ -114,12 +114,7 @@ func Configure(p *config.Provider) {
 		r.ShortGroup = shortGroup
 		r.Kind = "Tenant"
 	})
-	p.AddResourceConfigurator("authentik_token", func(r *config.Resource) {
-		r.ShortGroup = shortGroup
-		r.Kind = "Token"
 
-		r.References["user"] = UserRef
-	})
 	p.AddResourceConfigurator("authentik_event_rule", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "EventRule"

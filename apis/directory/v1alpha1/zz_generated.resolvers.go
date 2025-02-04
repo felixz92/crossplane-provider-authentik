@@ -309,3 +309,45 @@ func (mg *SourceSAML) ResolveReferences(ctx context.Context, c client.Reader) er
 
 	return nil
 }
+
+// ResolveReferences of this Token.
+func (mg *Token) ResolveReferences(ctx context.Context, c client.Reader) error {
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromFloatPtrValue(mg.Spec.ForProvider.User),
+		Extract:      resource.ExtractParamPath("id", true),
+		Reference:    mg.Spec.ForProvider.UserRef,
+		Selector:     mg.Spec.ForProvider.UserSelector,
+		To: reference.To{
+			List:    &UserList{},
+			Managed: &User{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.User")
+	}
+	mg.Spec.ForProvider.User = reference.ToFloatPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.UserRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromFloatPtrValue(mg.Spec.InitProvider.User),
+		Extract:      resource.ExtractParamPath("id", true),
+		Reference:    mg.Spec.InitProvider.UserRef,
+		Selector:     mg.Spec.InitProvider.UserSelector,
+		To: reference.To{
+			List:    &UserList{},
+			Managed: &User{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.User")
+	}
+	mg.Spec.InitProvider.User = reference.ToFloatPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.UserRef = rsp.ResolvedReference
+
+	return nil
+}

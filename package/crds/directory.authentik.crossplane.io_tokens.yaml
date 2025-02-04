@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: tokens.authentik.crossplane.io
+  name: tokens.directory.authentik.crossplane.io
 spec:
-  group: authentik.crossplane.io
+  group: directory.authentik.crossplane.io
   names:
     categories:
     - crossplane

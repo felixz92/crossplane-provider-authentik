@@ -49,4 +49,11 @@ func Configure(p *config.Provider) {
 		r.References["enrollment_flow"] = base.FlowRef
 		r.References["pre_authentication_flow"] = base.FlowRef
 	})
+
+	p.AddResourceConfigurator("authentik_token", func(r *config.Resource) {
+		r.ShortGroup = shortGroup
+		r.Kind = "Token"
+
+		r.References["user"] = base.UserRef
+	})
 }

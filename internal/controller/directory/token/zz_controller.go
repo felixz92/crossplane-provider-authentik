@@ -21,7 +21,7 @@ import (
 	"github.com/pkg/errors"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/felixz92/crossplane-provider-authentik/apis/authentik/v1alpha1"
+	v1alpha1 "github.com/felixz92/crossplane-provider-authentik/apis/directory/v1alpha1"
 	features "github.com/felixz92/crossplane-provider-authentik/internal/features"
 )
 

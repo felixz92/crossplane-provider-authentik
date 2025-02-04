@@ -19,13 +19,13 @@ import (
 	outpost "github.com/felixz92/crossplane-provider-authentik/internal/controller/authentik/outpost"
 	scopemapping "github.com/felixz92/crossplane-provider-authentik/internal/controller/authentik/scopemapping"
 	serviceconnectionkubernetes "github.com/felixz92/crossplane-provider-authentik/internal/controller/authentik/serviceconnectionkubernetes"
-	token "github.com/felixz92/crossplane-provider-authentik/internal/controller/authentik/token"
 	group "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/group"
 	sourcekerberos "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/sourcekerberos"
 	sourceldap "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/sourceldap"
 	sourceoauth "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/sourceoauth"
 	sourceplex "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/sourceplex"
 	sourcesaml "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/sourcesaml"
+	token "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/token"
 	user "github.com/felixz92/crossplane-provider-authentik/internal/controller/directory/user"
 	binding "github.com/felixz92/crossplane-provider-authentik/internal/controller/policy/binding"
 	dummy "github.com/felixz92/crossplane-provider-authentik/internal/controller/policy/dummy"
@@ -103,13 +103,13 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		outpost.Setup,
 		scopemapping.Setup,
 		serviceconnectionkubernetes.Setup,
-		token.Setup,
 		group.Setup,
 		sourcekerberos.Setup,
 		sourceldap.Setup,
 		sourceoauth.Setup,
 		sourceplex.Setup,
 		sourcesaml.Setup,
+		token.Setup,
 		user.Setup,
 		binding.Setup,
 		dummy.Setup,
