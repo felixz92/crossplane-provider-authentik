@@ -116,6 +116,10 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProvider:
         Defaults to `false`.
     user : float, default is Undefined, optional
         (Number)
+    userRef : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef, default is Undefined, optional
+        user ref
+    userSelector : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector, default is Undefined, optional
+        user selector
     """
 
 
@@ -132,6 +136,99 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecForProvider:
     retrieveKey?: bool
 
     user?: float
+
+    userRef?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef
+
+    userSelector?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRef:
+    r"""
+    Reference to a User in directory to populate user.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelector:
+    r"""
+    Selector for a User in directory to populate user.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecForProviderUserSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
@@ -171,6 +268,10 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
         Defaults to `false`.
     user : float, default is Undefined, optional
         (Number)
+    userRef : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef, default is Undefined, optional
+        user ref
+    userSelector : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector, default is Undefined, optional
+        user selector
     """
 
 
@@ -187,6 +288,99 @@ schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProvider:
     retrieveKey?: bool
 
     user?: float
+
+    userRef?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef
+
+    userSelector?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRef:
+    r"""
+    Reference to a User in directory to populate user.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelector:
+    r"""
+    Selector for a User in directory to populate user.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy
+
+
+schema AuthentikCrossplaneIoV1alpha1TokenSpecInitProviderUserSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema AuthentikCrossplaneIoV1alpha1TokenSpecProviderConfigRef:
